@@ -112,6 +112,17 @@ def format_report_line(movie):
                     duration_in_hours(movie["duration_min"])}, жанры: {
                         ", ".join(sort_genres)}"
 
+# Task №5
+def titles_by_sorted(movies):
+    sorted_titles = sorted(movies, key=lambda movie: movie['rating'], reverse=True)
+    return [top_title["title"] for top_title in sorted_titles]
+
+def top_n_by_rating(movies, n=3):
+    sorted_titles = sorted(movies, key=lambda movie: movie['rating'], reverse=True)
+    return [(title_top['title'],title_top['rating']) for title_top in sorted_titles[:n]]
+
+
+
 def main():     
 
     print("Hello from homework-1!")

@@ -51,7 +51,23 @@ def duration_in_hours(minutes):
     hour_min = [str(minutes // 60), 'ч ', str(minutes % 60), 'м']
     return "".join(hour_min) 
 
+# Task №2
+def rating_tier(rating):
+    if rating >= 9:
+        return "шедевр"
+    elif 7 <= rating < 9:
+        return "хорошо" 
+    else:
+        return "средне" if rating >= 5 else "слабо"
 
+def decade_label(year):
+    match year:
+        case _ if year > 2020:
+            return "новые"
+        case _ if year < 2015:
+            return "старые"
+        case _:
+            return "недавние"
 
 def main():     
 

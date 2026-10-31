@@ -69,6 +69,31 @@ def decade_label(year):
         case _:
             return "недавние"
 
+# Task №3
+def move_exept_genres(movies, genres="comedy"):
+    movie_set = {genres}
+    for movie in movies:
+        if movie_set.issubset(movie["genres"]):
+            continue
+        print(movie['title'])
+
+def search_amaizing(movies, rating=9.0):
+    i = 0
+    while i < len(movies):
+        if movies[i]["rating"] > rating:
+            print(movies[i]["title"])
+            break
+        i += 1
+    else:
+        print("Шедевров не найдено")
+
+def count_long_movies(movies, threshold=120):
+    count = 0
+    for movie in movies:
+        if movie["duration_min"] > threshold:           
+            count += 1      
+    print(f"{count} ф. длиннее {threshold} минут") # в задании не сказано нужно ли вывести на экран
+    return count    # или надо возвращать значение. сделал и так и так.
 def main():     
 
     print("Hello from homework-1!")

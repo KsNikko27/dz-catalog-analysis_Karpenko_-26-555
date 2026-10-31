@@ -147,6 +147,27 @@ def title_more_middle_rating(movies):
             for movie in movies 
             if movie["rating"] > average_rating(movies)}
 
+# Task №7
+def all_genres(movies): # не совсем понял как без цикла сделать 
+    set_genre = set()  #интересно узнать будьте так любезны показать.
+    for movie in movies:
+        set_genre = set_genre | movie["genres"]
+    return set_genre
+
+def common_actors(movie1, movie2):
+    return set(movie1["actors"]) & set(movie2["actors"])
+
+def genres_only_in_one(movies_a, movies_b):
+    if isinstance(movies_a, dict):
+        movies_a = [movies_a]
+    if isinstance(movies_b, dict):
+            movies_b = [movies_b]
+    return set().union(
+        *[movie_a["genres"] for movie_a in movies_a]
+        ) - set().union(
+            *[movie_b["genres"] for movie_b in movies_b]
+            )
+
 def main():     
 
     print("Hello from homework-1!")

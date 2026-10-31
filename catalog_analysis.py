@@ -43,8 +43,7 @@ def average_rating(movies):
 
 def catalog_age_stats(movies, current_year=2026) -> tuple[int, int, int]: 
     year_sort = sorted([movie["year"] for movie in movies])
-    midle_m = current_year - math.ceil(sum(year_sort) / len(year_sort)) 
-    print(midle_m)
+    midle_m = current_year - math.ceil(sum(year_sort) / len(year_sort))
     return (current_year - year_sort[0], current_year - year_sort[-1], midle_m)
 
 def duration_in_hours(minutes):
@@ -117,6 +116,7 @@ def titles_by_sorted(movies):
     sorted_titles = sorted(movies, key=lambda movie: movie['rating'], reverse=True)
     return [top_title["title"] for top_title in sorted_titles]
 
+
 def top_n_by_rating(movies, n=3):
     sorted_titles = sorted(movies, key=lambda movie: movie['rating'], reverse=True)
     return [(title_top['title'],title_top['rating']) for title_top in sorted_titles[:n]]
@@ -180,10 +180,21 @@ def demonstrate_generator(generator):# Работа генератора
 def generator_expression(movies):
     return sum(movie["duration_min"] for movie in movies if movie["rating"] > 7)
 
+def build_report(movies):
+    print("ОТЧеТ ПО КАТАЛОГУ")
+    print(f"Средний рейтинг: {average_rating(movies)}")
+    print(f"Средний возраст фильмов: {catalog_age_stats(movies)[2]} лет")
+    print("\nТоп-3 фильма:")
+    for top in sorted(movies, key=lambda movie: movie['rating'], reverse=True)[:3]:
+        print(f"\t{format_report_line(top)}")
+    print("\nФильмов по жанрам:") 
+    dict_genre = count_by_genre(movies)
+    for genre in dict_genre:
+        print(f"\t{genre} - {dict_genre.get(genre, 0)}")
+    print(f"Все жанры каталога: {" ".join(list(all_genres(movies)))}")
 
 def main():     
-
-    print("Hello from homework-1!")
+    build_report(movies)
 
 
 if __name__ == "__main__":

@@ -92,8 +92,8 @@ def count_long_movies(movies, threshold=120):
     for movie in movies:
         if movie["duration_min"] > threshold:           
             count += 1      
-    print(f"{count} ф. длиннее {threshold} минут") # в задании не сказано нужно ли вывести на экран
-    return count    # или надо возвращать значение. сделал и так и так.
+    print(f"{count} ф. длиннее {threshold} минут")
+    return count    #не знаю надо возвращать значение? сделал и так и так.
 
 # Task №4
 def normalize_title(title):
@@ -105,8 +105,12 @@ def make_slug(title):
 
 def format_report_line(movie):
     sort_genres = sorted(movie["genres"])
-    return f"\"{normalize_title(movie["title"])}\" ({movie["year"]}) - {movie["rating"]}/10, {duration_in_hours(movie["duration_min"])}, жанры: {", ".join(sort_genres)}"
-
+    return f"\"{
+        normalize_title(movie["title"])}\" ({
+            movie["year"]}) - {
+                movie["rating"]}/10, {
+                    duration_in_hours(movie["duration_min"])}, жанры: {
+                        ", ".join(sort_genres)}"
 
 def main():     
 

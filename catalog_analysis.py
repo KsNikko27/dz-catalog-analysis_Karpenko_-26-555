@@ -43,7 +43,7 @@ def average_rating(movies):
 
 def catalog_age_stats(movies, current_year=2026) -> tuple[int, int, int]: 
     year_sort = sorted([movie["year"] for movie in movies])
-    midle_m = current_year - math.ceil(sum(year_sort) / len(year_sort))
+    midle_m = math.ceil(current_year - (sum(year_sort) / len(year_sort)))
     return (current_year - year_sort[0], current_year - year_sort[-1], midle_m)
 
 def duration_in_hours(minutes):

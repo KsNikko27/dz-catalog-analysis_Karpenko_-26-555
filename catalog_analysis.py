@@ -94,6 +94,20 @@ def count_long_movies(movies, threshold=120):
             count += 1      
     print(f"{count} ф. длиннее {threshold} минут") # в задании не сказано нужно ли вывести на экран
     return count    # или надо возвращать значение. сделал и так и так.
+
+# Task №4
+def normalize_title(title):
+    title = title.split()
+    return " ".join([word[0].upper() + word[1:].lower() for word in title])
+
+def make_slug(title):
+    return title.lower().replace(" ", "-")
+
+def format_report_line(movie):
+    sort_genres = sorted(movie["genres"])
+    return f"\"{normalize_title(movie["title"])}\" ({movie["year"]}) - {movie["rating"]}/10, {duration_in_hours(movie["duration_min"])}, жанры: {", ".join(sort_genres)}"
+
+
 def main():     
 
     print("Hello from homework-1!")

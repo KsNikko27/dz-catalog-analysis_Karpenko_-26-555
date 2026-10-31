@@ -168,6 +168,19 @@ def genres_only_in_one(movies_a, movies_b):
             *[movie_b["genres"] for movie_b in movies_b]
             )
 
+#Task 8
+def iter_high_rated(movies, min_rating=8.0):
+    for movie in movies:
+        if movie["rating"] >= min_rating:
+            yield movie
+def demonstrate_generator(generator):# Работа генератора
+    for movie in generator:
+        print(format_report_line(movie))
+
+def generator_expression(movies):
+    return sum(movie["duration_min"] for movie in movies if movie["rating"] > 7)
+
+
 def main():     
 
     print("Hello from homework-1!")
